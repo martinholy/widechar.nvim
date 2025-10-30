@@ -3,12 +3,13 @@
 local M = {}
 
 -- Check if highlight group exists, if not create it
-local function setup_highlight()
+local function setup_highlight(opts)
+    opts = opts or {}
     local hl_exists = vim.fn.hlexists('WideChar') == 1
     if not hl_exists then
         vim.api.nvim_set_hl(0, 'WideChar', {
-            fg = '#afd700',
-            bg = '#303030'
+            fg = opts.fg or '#afd700',
+            bg = opts.bg or '#303030'
         })
     end
 end
@@ -29,9 +30,9 @@ local function match_wide_char()
 end
 
 -- Setup the plugin
-function M.setup()
+function M.setup(opts)
     -- Setup highlight group
-    setup_highlight()
+    setup_highlight(opts)
 
     -- Create autocommand group
     local group = vim.api.nvim_create_augroup('widechar_match', { clear = true })

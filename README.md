@@ -15,10 +15,10 @@ A NeoVim plugin that highlights non-ASCII characters (outside the 0-127 range) i
 
 ```lua
 {
-  'martinholy/widechar.nvim',
-  config = function()
-    require('widechar').setup()
-  end
+    'martinholy/widechar.nvim',
+    config = function()
+        require('widechar').setup()
+    end
 }
 ```
 
@@ -28,16 +28,12 @@ Once installed, the plugin automatically highlights any character outside the AS
 
 ## Customization
 
-The default highlight uses:
-- Foreground: `#afd700` (lime green)
-- Background: `#303030` (dark gray)
-
-You can customize the highlight group `WideChar` in your NeoVim config:
+You can customize the colors by passing them to the setup function:
 
 ```lua
-vim.api.nvim_set_hl(0, 'WideChar', {
-  fg = '#your_color',
-  bg = '#your_background'
+require('widechar').setup({
+    fg = '#afd700',  -- lime green foreground
+    bg = '#303030'   -- dark gray background
 })
 ```
 
